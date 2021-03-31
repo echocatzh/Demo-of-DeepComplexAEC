@@ -1,0 +1,1097 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>F-T-LSTM based Complex Network for Joint Acoustic Echo Cancellation and Speech Enhancement</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/github-light.css">
+</head>
+
+<body>
+    <article>
+        <header>
+            <h1>Samples from "F-T-LSTM based Complex Network for Joint Acoustic Echo Cancellation and Speech
+                Enhancement"</h1>
+        </header>
+    </article>
+
+    <div><b>Authors:</b> Shimin Zhang, Yuxiang Kong, Shubo Lv, Yanxin Hu, Lei Xie
+    </div>
+
+    <hr style="height:1px;border:none;border-top:1px solid #555555; width:130%">
+    <h2>Part1: Blind test released on interspeech 2021</h2>
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .tg td {
+            border-bottom-width: 1px;
+            border-color: black;
+            border-style: solid;
+            border-top-width: 1px;
+            border-width: 0px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-bottom-width: 1px;
+            border-color: black;
+            border-style: solid;
+            border-top-width: 1px;
+            border-width: 0px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-c3ow {
+            border-color: inherit;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-0pky {
+            border-color: inherit;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-pcvp {
+            border-color: inherit;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-ihkz {
+            border-color: inherit;
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-7kms {
+            border-color: inherit;
+            font-family: Arial, Helvetica, sans-serif !important;
+            ;
+            text-align: center;
+            vertical-align: top
+        }
+    </style>
+    <h3>Double-talk scenario</h3>
+    <table class="tg" style="undefined;table-layout: fixed; width: 493px">
+        <colgroup>
+            <col style="width: 150px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="tg-c3ow">Model</th>
+                <th class="tg-c3ow">Sample 1</th>
+                <th class="tg-c3ow">Sample 2</th>
+                <th class="tg-c3ow">Sample 3</th>
+                <th class="tg-c3ow">Sample 4</th>
+                <th class="tg-c3ow">Sample 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-pcvp">Microphone signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/doubletalk/0I0XMl3M0ECO0U1N0cJvpg_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/doubletalk/HAxmF7v4dE0itSp5R5B3Dw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/doubletalk/V0JqgjlrB0Ke9y91r0rxNw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/doubletalk/W0zK3dv0QE2YckPArTGXCg_doubletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/doubletalk/zzCIhneJ8UKTWZ48U0kRXw_doubletalk_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-0pky">Reference signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/doubletalk/0I0XMl3M0ECO0U1N0cJvpg_doubletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/doubletalk/HAxmF7v4dE0itSp5R5B3Dw_doubletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/doubletalk/V0JqgjlrB0Ke9y91r0rxNw_doubletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/doubletalk/W0zK3dv0QE2YckPArTGXCg_doubletalk_with_movement_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/doubletalk/zzCIhneJ8UKTWZ48U0kRXw_doubletalk_lpb.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">Webrtc-AEC3</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/doubletalk/0I0XMl3M0ECO0U1N0cJvpg_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/doubletalk/HAxmF7v4dE0itSp5R5B3Dw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/doubletalk/V0JqgjlrB0Ke9y91r0rxNw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/doubletalk/W0zK3dv0QE2YckPArTGXCg_doubletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/doubletalk/zzCIhneJ8UKTWZ48U0kRXw_doubletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">BLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/doubletalk/0I0XMl3M0ECO0U1N0cJvpg_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/doubletalk/HAxmF7v4dE0itSp5R5B3Dw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/doubletalk/V0JqgjlrB0Ke9y91r0rxNw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/doubletalk/W0zK3dv0QE2YckPArTGXCg_doubletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/doubletalk/zzCIhneJ8UKTWZ48U0kRXw_doubletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">AEC-challenge baseline</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/doubletalk/0I0XMl3M0ECO0U1N0cJvpg_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/doubletalk/HAxmF7v4dE0itSp5R5B3Dw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/doubletalk/V0JqgjlrB0Ke9y91r0rxNw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/doubletalk/W0zK3dv0QE2YckPArTGXCg_doubletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/doubletalk/zzCIhneJ8UKTWZ48U0kRXw_doubletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">DCCRN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/doubletalk/0I0XMl3M0ECO0U1N0cJvpg_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/doubletalk/HAxmF7v4dE0itSp5R5B3Dw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/doubletalk/V0JqgjlrB0Ke9y91r0rxNw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/doubletalk/W0zK3dv0QE2YckPArTGXCg_doubletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/doubletalk/zzCIhneJ8UKTWZ48U0kRXw_doubletalk_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-pcvp">DTLN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/doubletalk/0I0XMl3M0ECO0U1N0cJvpg_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/doubletalk/HAxmF7v4dE0itSp5R5B3Dw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/doubletalk/V0JqgjlrB0Ke9y91r0rxNw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/doubletalk/W0zK3dv0QE2YckPArTGXCg_doubletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/doubletalk/zzCIhneJ8UKTWZ48U0kRXw_doubletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">DC-F-T-LSTM-CLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/doubletalk/0I0XMl3M0ECO0U1N0cJvpg_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/doubletalk/HAxmF7v4dE0itSp5R5B3Dw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/doubletalk/V0JqgjlrB0Ke9y91r0rxNw_doubletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/doubletalk/W0zK3dv0QE2YckPArTGXCg_doubletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/doubletalk/zzCIhneJ8UKTWZ48U0kRXw_doubletalk_mic.wav">
+                    </audio></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3> Near-end single-talk scenario</h3>
+    <table class="tg" style="undefined;table-layout: fixed; width: 493px">
+        <colgroup>
+            <col style="width: 150px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="tg-c3ow">Model</th>
+                <th class="tg-c3ow">Sample 1</th>
+                <th class="tg-c3ow">Sample 2</th>
+                <th class="tg-c3ow">Sample 3</th>
+                <th class="tg-c3ow">Sample 4</th>
+                <th class="tg-c3ow">Sample 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-pcvp">Microphone signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/nearend-singletalk/DdGOn2Ukz0ihXXssc077hQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/nearend-singletalk/K9zX4yKvg0mmR1FDfxyCwQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/nearend-singletalk/P0hsIfdQBkSP0aXsLXBF1Q_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/nearend-singletalk/rEVrdY1tHE00AGubEOasVA_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/nearend-singletalk/V6Mw0Ti8RUSkzvMGB4WGiw_nearend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Reference signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/nearend-singletalk/DdGOn2Ukz0ihXXssc077hQ_nearend_singletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/nearend-singletalk/K9zX4yKvg0mmR1FDfxyCwQ_nearend_singletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/nearend-singletalk/P0hsIfdQBkSP0aXsLXBF1Q_nearend_singletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/nearend-singletalk/rEVrdY1tHE00AGubEOasVA_nearend_singletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/nearend-singletalk/V6Mw0Ti8RUSkzvMGB4WGiw_nearend_singletalk_lpb.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">Webrtc-AEC3</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/nearend-singletalk/DdGOn2Ukz0ihXXssc077hQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/nearend-singletalk/K9zX4yKvg0mmR1FDfxyCwQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/nearend-singletalk/P0hsIfdQBkSP0aXsLXBF1Q_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/nearend-singletalk/rEVrdY1tHE00AGubEOasVA_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/nearend-singletalk/V6Mw0Ti8RUSkzvMGB4WGiw_nearend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">BLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/nearend-singletalk/DdGOn2Ukz0ihXXssc077hQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/nearend-singletalk/K9zX4yKvg0mmR1FDfxyCwQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/nearend-singletalk/P0hsIfdQBkSP0aXsLXBF1Q_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/nearend-singletalk/rEVrdY1tHE00AGubEOasVA_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/nearend-singletalk/V6Mw0Ti8RUSkzvMGB4WGiw_nearend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">AEC-challenge baseline</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/nearend-singletalk/DdGOn2Ukz0ihXXssc077hQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/nearend-singletalk/K9zX4yKvg0mmR1FDfxyCwQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/nearend-singletalk/P0hsIfdQBkSP0aXsLXBF1Q_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/nearend-singletalk/rEVrdY1tHE00AGubEOasVA_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/nearend-singletalk/V6Mw0Ti8RUSkzvMGB4WGiw_nearend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">DCCRN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/nearend-singletalk/DdGOn2Ukz0ihXXssc077hQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/nearend-singletalk/K9zX4yKvg0mmR1FDfxyCwQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/nearend-singletalk/P0hsIfdQBkSP0aXsLXBF1Q_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/nearend-singletalk/rEVrdY1tHE00AGubEOasVA_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/nearend-singletalk/V6Mw0Ti8RUSkzvMGB4WGiw_nearend_singletalk_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-pcvp">DTLN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/nearend-singletalk/DdGOn2Ukz0ihXXssc077hQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/nearend-singletalk/K9zX4yKvg0mmR1FDfxyCwQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/nearend-singletalk/P0hsIfdQBkSP0aXsLXBF1Q_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/nearend-singletalk/rEVrdY1tHE00AGubEOasVA_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/nearend-singletalk/V6Mw0Ti8RUSkzvMGB4WGiw_nearend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">DC-F-T-LSTM-CLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/nearend-singletalk/DdGOn2Ukz0ihXXssc077hQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/nearend-singletalk/K9zX4yKvg0mmR1FDfxyCwQ_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/nearend-singletalk/P0hsIfdQBkSP0aXsLXBF1Q_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/nearend-singletalk/rEVrdY1tHE00AGubEOasVA_nearend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/nearend-singletalk/V6Mw0Ti8RUSkzvMGB4WGiw_nearend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3> Far-end single-talk scenario</h3>
+    <table class="tg" style="undefined;table-layout: fixed; width: 493px">
+        <colgroup>
+            <col style="width: 150px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="tg-c3ow">Model</th>
+                <th class="tg-c3ow">Sample 1</th>
+                <th class="tg-c3ow">Sample 2</th>
+                <th class="tg-c3ow">Sample 3</th>
+                <th class="tg-c3ow">Sample 4</th>
+                <th class="tg-c3ow">Sample 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-pcvp">Microphone signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/farend-singletalk/afHuFvflAkaH7Pr85kheUQ_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/farend-singletalk/Ja8OngfthkOCmL8ldcRNyg_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/farend-singletalk/N2rQLbnp2UOg2QFRaggbDw_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/farend-singletalk/qiQL0BUPxk0YtpnP7JGfNg_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/microphone/farend-singletalk/X70ilGSHZU0x8DliEgU4Zw_farend_singletalk_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-0pky">Reference signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/farend-singletalk/afHuFvflAkaH7Pr85kheUQ_farend_singletalk_with_movement_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/farend-singletalk/Ja8OngfthkOCmL8ldcRNyg_farend_singletalk_with_movement_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/farend-singletalk/N2rQLbnp2UOg2QFRaggbDw_farend_singletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/farend-singletalk/qiQL0BUPxk0YtpnP7JGfNg_farend_singletalk_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/reference/farend-singletalk/X70ilGSHZU0x8DliEgU4Zw_farend_singletalk_lpb.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">Webrtc-AEC3</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/farend-singletalk/afHuFvflAkaH7Pr85kheUQ_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/farend-singletalk/Ja8OngfthkOCmL8ldcRNyg_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/farend-singletalk/N2rQLbnp2UOg2QFRaggbDw_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/farend-singletalk/qiQL0BUPxk0YtpnP7JGfNg_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/webrtc/farend-singletalk/X70ilGSHZU0x8DliEgU4Zw_farend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">BLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/farend-singletalk/afHuFvflAkaH7Pr85kheUQ_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/farend-singletalk/Ja8OngfthkOCmL8ldcRNyg_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/farend-singletalk/N2rQLbnp2UOg2QFRaggbDw_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/farend-singletalk/qiQL0BUPxk0YtpnP7JGfNg_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/blstm/farend-singletalk/X70ilGSHZU0x8DliEgU4Zw_farend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">AEC-challenge baseline</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/farend-singletalk/afHuFvflAkaH7Pr85kheUQ_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/farend-singletalk/Ja8OngfthkOCmL8ldcRNyg_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/farend-singletalk/N2rQLbnp2UOg2QFRaggbDw_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/farend-singletalk/qiQL0BUPxk0YtpnP7JGfNg_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/aec_challenge_baseline/farend-singletalk/X70ilGSHZU0x8DliEgU4Zw_farend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">DCCRN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/farend-singletalk/afHuFvflAkaH7Pr85kheUQ_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/farend-singletalk/Ja8OngfthkOCmL8ldcRNyg_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/farend-singletalk/N2rQLbnp2UOg2QFRaggbDw_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/farend-singletalk/qiQL0BUPxk0YtpnP7JGfNg_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dccrn_aec/farend-singletalk/X70ilGSHZU0x8DliEgU4Zw_farend_singletalk_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-pcvp">DTLN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/farend-singletalk/afHuFvflAkaH7Pr85kheUQ_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/farend-singletalk/Ja8OngfthkOCmL8ldcRNyg_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/farend-singletalk/N2rQLbnp2UOg2QFRaggbDw_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/farend-singletalk/qiQL0BUPxk0YtpnP7JGfNg_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dtln_aec/farend-singletalk/X70ilGSHZU0x8DliEgU4Zw_farend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">DC-F-T-LSTM-CLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/farend-singletalk/afHuFvflAkaH7Pr85kheUQ_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/farend-singletalk/Ja8OngfthkOCmL8ldcRNyg_farend_singletalk_with_movement_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/farend-singletalk/N2rQLbnp2UOg2QFRaggbDw_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/farend-singletalk/qiQL0BUPxk0YtpnP7JGfNg_farend_singletalk_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source
+                            src="./samples/blind_test_interspeech_2021/dc_ftlstm_clstm_segsnr/farend-singletalk/X70ilGSHZU0x8DliEgU4Zw_farend_singletalk_mic.wav">
+                    </audio></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr style="height:1px;border:none;border-top:1px solid #555555; width:130%">
+    <h2>Part2: Synthetic test dataset</h2>
+
+    <h3>Clean</h3>
+    <table class="tg" style="undefined;table-layout: fixed; width: 493px">
+        <colgroup>
+            <col style="width: 150px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="tg-c3ow">Model</th>
+                <th class="tg-c3ow">Sample 1</th>
+                <th class="tg-c3ow">Sample 2</th>
+                <th class="tg-c3ow">Sample 3</th>
+                <th class="tg-c3ow">Sample 4</th>
+                <th class="tg-c3ow">Sample 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-pcvp">Microphone signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/clean/120_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/clean/20_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/clean/420_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/clean/500_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/clean/50_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Reference signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/clean/120_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/clean/20_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/clean/420_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/clean/500_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/clean/50_lpb.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Label signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/clean/120_label.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/clean/20_label.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/clean/420_label.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/clean/500_label.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/clean/50_label.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">Webrtc-AEC3</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/clean/120_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/clean/20_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/clean/420_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/clean/500_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/clean/50_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">BLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/clean/120_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/clean/20_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/clean/420_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/clean/500_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/clean/50_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">AEC-challenge baseline</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/clean/120_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/clean/20_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/clean/420_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/clean/500_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/clean/50_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-0pky">DCCRN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/clean/120_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/clean/20_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/clean/420_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/clean/500_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/clean/50_mic.wav">
+                    </audio></td>
+
+
+            </tr>
+            <tr>
+                <td class="tg-pcvp">DTLN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/clean/120_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/clean/20_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/clean/420_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/clean/500_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/clean/50_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-0pky">DC-F-T-LSTM-CLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/clean/120_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/clean/20_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/clean/420_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/clean/500_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/clean/50_mic.wav">
+                    </audio></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr style="height:1px;border:none;border-top:1px solid #555555; width:130%">
+    <h3>Noisy</h3>
+    <table class="tg" style="undefined;table-layout: fixed; width: 493px">
+        <colgroup>
+            <col style="width: 150px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+            <col style="width: 300px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="tg-c3ow">Model</th>
+                <th class="tg-c3ow">Sample 1</th>
+                <th class="tg-c3ow">Sample 2</th>
+                <th class="tg-c3ow">Sample 3</th>
+                <th class="tg-c3ow">Sample 4</th>
+                <th class="tg-c3ow">Sample 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-pcvp">Microphone signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/noisy/130_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/noisy/150_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/noisy/30_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/noisy/40_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/microphone/noisy/500_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Reference signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/noisy/130_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/noisy/150_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/noisy/30_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/noisy/40_lpb.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/reference/noisy/500_lpb.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Label signal</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/noisy/130_label.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/noisy/150_label.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/noisy/30_label.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/noisy/40_label.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/label/noisy/500_label.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">Webrtc-AEC3</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/noisy/130_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/noisy/150_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/noisy/30_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/noisy/40_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/webrtc/noisy/500_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-0pky">BLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/noisy/130_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/noisy/150_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/noisy/30_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/noisy/40_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/blstm/noisy/500_mic.wav">
+                    </audio></td>
+            </tr>
+            <tr>
+                <td class="tg-pcvp">AEC-challenge baseline</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/noisy/130_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/noisy/150_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/noisy/30_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/noisy/40_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/aec_challenge_baseline/noisy/500_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-0pky">DCCRN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/noisy/130_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/noisy/150_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/noisy/30_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/noisy/40_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dccrn_aec/noisy/500_mic.wav">
+                    </audio></td>
+
+
+            </tr>
+            <tr>
+                <td class="tg-pcvp">DTLN-AEC</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/noisy/130_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/noisy/150_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/noisy/30_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/noisy/40_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dtln_aec/noisy/500_mic.wav">
+                    </audio></td>
+
+            </tr>
+            <tr>
+                <td class="tg-0pky">DC-F-T-LSTM-CLSTM</td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/noisy/130_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/noisy/150_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/noisy/30_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/noisy/40_mic.wav">
+                    </audio></td>
+                <td class="tg-ihkz"><audio controls="">
+                        <source src="./samples/simu_test/dc_ftlstm_clstm_segsnr/noisy/500_mic.wav">
+                    </audio></td>
+            </tr>
+        </tbody>
+    </table>
